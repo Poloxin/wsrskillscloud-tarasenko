@@ -4,4 +4,11 @@
   tasks:
   - name: Update
     apt:
+            update_cache: yes
             upgrade: 'yes'
+    apt:
+            name: curl
+            state: present
+    apt:
+            name: docker
+            state: present
