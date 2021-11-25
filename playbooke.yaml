@@ -4,11 +4,25 @@
   tasks:
   - name: Update
     apt:
-            update_cache: yes
-            upgrade: 'yes'
+           update_cache: yes
+           upgrade: 'yes'
+  - name: Install pkg
     apt:
-            name: curl
-            state: present
-    apt:
-            name: docker
-            state: present
+           name: curl
+           name: apt-transport-https 
+           name: ca-certificates
+           name: software-properties-common
+           state: present
+  - name: Add an Apt signing key, uses whichever key is at the URL
+    uri:
+           url: https://download.docker.com/linux/ubuntu/gpg
+  - name: install docker 
+    apt: 
+           name: docker-ce
+           state: present
+  - name: Creates directory for web
+    file:
+            path: /skillcloud-nginx
+            state: directory
+  - name: Reboot 
+    reboot:
