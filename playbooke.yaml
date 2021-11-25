@@ -1,0 +1,7 @@
+- name: WSR
+  hosts: project_3
+  remote_user: root
+  tasks:
+  - name: Update
+    apt:
+            upgrade: 'yes'
